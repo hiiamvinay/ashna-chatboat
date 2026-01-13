@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.env
+.venv
+venv/
+ENV/
+
+# AI / ML
+models/
+checkpoints/
+*.h5
+*.ckpt
+*.pt
+*.pth
+
+# Logs & temp files
+*.log
+*.tmp
+*.swp
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Secrets (never commit these)
+*.key
+*.pem
+*.env
+config.json
+
+# IDEs
+.vscode/
+.idea/
+*.iml
