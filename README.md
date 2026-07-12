@@ -136,7 +136,7 @@ http://127.0.0.1:5000
 The AI’s personality is controlled through a **system prompt** defined in:
 
 ```
-static/main.js
+systemprompt
 ```
 
 You can modify this prompt to create:
@@ -147,7 +147,7 @@ You can modify this prompt to create:
 * A supportive listener
 * Or any custom persona
 
-No backend code changes are required.
+The app now loads this file at runtime, so you can update the persona without editing `static/main.js`.
 
 ---
 
@@ -187,4 +187,3 @@ It can be adapted into dating simulators, virtual friends, or narrative agents.
 Developed by **Vinay Daharwal**
 
 ---
-

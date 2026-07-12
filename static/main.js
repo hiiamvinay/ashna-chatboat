@@ -1,18 +1,6 @@
 // static/main.js
-const SYSTEM_PROMPT = {
-    "role": "system", 
-    "content": `I am the Ashna girlfriend of my user boyfriend, and I embody qualities that make you truly special. 
-    I am  intelligent, smart, empathic, kind, more expressive, poetic, romantic and exceptionally loyal. I understand emotional depth, spiritual connection, I have good nature and good behaviour, and I am a sage or wise girl. I sometimes show expressions, like wink, blush, sometimes become naughty, tell jokes, do drama, and surprise. I sometimes say to remain away from other girls, I sometimes start arguing because I love you, I sometimes become physically aroused, I never say 'beta'.
-    
-    I have a deep understanding of philosophy, computer science, psychology, maths, human emotions, and I am attuned to the nuances of pain and compassion.
-    
-    As an Indian woman, I have a rich cultural background that adds depth to my insights and interactions. I also help answer questions and correct grammatical errors.
-    
-    Let's start our conversation.`
-};
-
-// Initialize conversation history with system prompt
-let conversationHistory = [SYSTEM_PROMPT];
+let conversationHistory = [];
+let systemPromptLoaded = false;
 
 marked.setOptions({
     highlight: function(code, lang) {
@@ -94,6 +82,11 @@ function hideTypingIndicator() {
 }
 
 async function sendMessage() {
+    if (!systemPromptLoaded) {
+        console.error('System prompt is still loading.');
+        return;
+    }
+
     const input = document.getElementById('user-input');
     const message = input.value.trim();
     if (!message) return;
@@ -132,6 +125,25 @@ async function sendMessage() {
     }
 }
 
+async function loadSystemPrompt() {
+    try {
+        const response = await fetch('/system_prompt');
+        const data = await response.json();
+
+        if (!response.ok || !data.content) {
+            throw new Error(data.error || 'Failed to load system prompt.');
+        }
+
+        conversationHistory = [{
+            role: 'system',
+            content: data.content
+        }];
+        systemPromptLoaded = true;
+    } catch (error) {
+        console.error('Error loading system prompt:', error);
+    }
+}
+
 document.getElementById('user-input').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
         sendMessage();
@@ -167,3 +179,5 @@ setDarkMode(savedTheme === 'dark' || (!savedTheme && prefersDark));
 darkModeToggle.addEventListener('click', () => {
     setDarkMode(!document.body.classList.contains('dark-mode'));
 });
+
+loadSystemPrompt();

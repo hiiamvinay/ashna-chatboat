@@ -12,6 +12,7 @@ build/
 .env
 .venv
 venv/
+myenv/
 ENV/
 
 # AI / ML
@@ -41,3 +42,4 @@ config.json
 .vscode/
 .idea/
 *.iml
+

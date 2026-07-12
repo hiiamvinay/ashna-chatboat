@@ -1,12 +1,23 @@
 from flask import Flask, request, jsonify, render_template
 from chat import chat_response
 from datetime import datetime
+from pathlib import Path
 
 app = Flask(__name__)
+SYSTEM_PROMPT_FILE = Path(__file__).with_name('systemprompt')
 
 @app.route('/')
 def home():
     return render_template('index.html')
+
+@app.route('/system_prompt', methods=['GET'])
+def system_prompt():
+    try:
+        content = SYSTEM_PROMPT_FILE.read_text(encoding='utf-8').strip()
+    except FileNotFoundError:
+        return jsonify({'error': 'System prompt file not found.'}), 404
+
+    return jsonify({'content': content})
 
 @app.route('/chat', methods=['POST'])
 def chat():
