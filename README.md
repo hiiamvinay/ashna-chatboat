@@ -135,7 +135,7 @@ http://127.0.0.1:5000
 The AI’s personality is controlled through a **system prompt** defined in:
 
 ```
-syste_mprompt.txt
+system_prompt.txt
 ```
 
 You can modify this prompt to create:
