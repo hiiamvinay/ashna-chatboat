@@ -62,7 +62,6 @@ Ashna-ChatBot/
 │
 ├── static/
 │   ├── main.js
-│   ├── AshnaChatBot.html
 │   ├── style.css
 │   ├── avatar.png
 │   └── chatbot.png
@@ -136,7 +135,7 @@ http://127.0.0.1:5000
 The AI’s personality is controlled through a **system prompt** defined in:
 
 ```
-systemprompt
+syste_mprompt.txt
 ```
 
 You can modify this prompt to create:
@@ -179,6 +178,16 @@ Ashna ChatBot is suitable for:
 * Web-based chat applications
 
 It can be adapted into dating simulators, virtual friends, or narrative agents.
+
+---
+
+
+
+## 🚢 Release & Deployment
+
+A live release of Ashna ChatBot is available at https://ashna-chatboat.onrender.com/.
+
+Visit the URL to try the deployed app; the repository contains the source for this release.
 
 ---
 

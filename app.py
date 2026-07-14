@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 app = Flask(__name__)
-SYSTEM_PROMPT_FILE = Path(__file__).with_name('systemprompt')
+SYSTEM_PROMPT_FILE = Path(__file__).with_name('system_prompt.txt')
 
 @app.route('/')
 def home():
