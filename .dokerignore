@@ -1,0 +1,6 @@
+myenv/
+.git/
+__pycache__/
+*.pyc
+.env
+system_prompt2.txt
